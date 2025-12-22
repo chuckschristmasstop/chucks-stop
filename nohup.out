@@ -1,0 +1,607 @@
+
+> quick_christmas@0.0.0 dev
+> vite --port 5174
+
+
+  VITE v7.3.0  ready in 74 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+12:33:31 PM [vite] (client) hmr update /src/pages/Contests.jsx
+12:45:05 PM [vite] (client) hmr update /src/index.css
+12:45:07 PM [vite] (client) hmr update /src/pages/Contests.jsx
+12:45:19 PM [vite] (client) hmr update /src/components/ui/Card.jsx
+12:45:19 PM [vite] Internal server error: Failed to resolve import "./Card.css" from "src/components/ui/Card.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/deandre/antigravity/quick_christmas/src/components/ui/Card.jsx:2:7
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import React from "react";
+  3  |  import "./Card.css";
+     |          ^
+  4  |  const Card = ({ children, className = "", style = {} }) => {
+  5  |    return /* @__PURE__ */ jsxDEV("div", { className: `christmas-card ${className}`, style, children }, void 0, false, {
+      at TransformPluginContext._formatLog (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:22669:26)
+      at async viteTransformMiddleware (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:24541:20)
+12:45:19 PM [vite] Internal server error: Failed to resolve import "./Card.css" from "src/components/ui/Card.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/deandre/antigravity/quick_christmas/src/components/ui/Card.jsx:2:7
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import React from "react";
+  3  |  import "./Card.css";
+     |          ^
+  4  |  const Card = ({ children, className = "", style = {} }) => {
+  5  |    return /* @__PURE__ */ jsxDEV("div", { className: `christmas-card ${className}`, style, children }, void 0, false, {
+      at TransformPluginContext._formatLog (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:22669:26)
+12:45:19 PM [vite] Internal server error: Failed to resolve import "./Card.css" from "src/components/ui/Card.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/deandre/antigravity/quick_christmas/src/components/ui/Card.jsx:2:7
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import React from "react";
+  3  |  import "./Card.css";
+     |          ^
+  4  |  const Card = ({ children, className = "", style = {} }) => {
+  5  |    return /* @__PURE__ */ jsxDEV("div", { className: `christmas-card ${className}`, style, children }, void 0, false, {
+      at TransformPluginContext._formatLog (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:22669:26)
+12:45:19 PM [vite] Internal server error: Failed to resolve import "./Card.css" from "src/components/ui/Card.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/deandre/antigravity/quick_christmas/src/components/ui/Card.jsx:2:7
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import React from "react";
+  3  |  import "./Card.css";
+     |          ^
+  4  |  const Card = ({ children, className = "", style = {} }) => {
+  5  |    return /* @__PURE__ */ jsxDEV("div", { className: `christmas-card ${className}`, style, children }, void 0, false, {
+      at TransformPluginContext._formatLog (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:22669:26)
+      at async viteTransformMiddleware (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:24541:20)
+12:45:19 PM [vite] Internal server error: Failed to resolve import "./Card.css" from "src/components/ui/Card.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/deandre/antigravity/quick_christmas/src/components/ui/Card.jsx:2:7
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import React from "react";
+  3  |  import "./Card.css";
+     |          ^
+  4  |  const Card = ({ children, className = "", style = {} }) => {
+  5  |    return /* @__PURE__ */ jsxDEV("div", { className: `christmas-card ${className}`, style, children }, void 0, false, {
+      at TransformPluginContext._formatLog (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:22669:26)
+      at async viteTransformMiddleware (file:///Users/deandre/antigravity/quick_christmas/node_modules/vite/dist/node/chunks/config.js:24541:20)
+12:45:21 PM [vite] (client) hmr update /src/pages/Trivia.jsx, /src/pages/Home.jsx, /src/pages/WhiteElephant.jsx, /src/pages/Contests.jsx
+12:47:39 PM [vite] (client) hmr update /src/index.css
+
+> quick_christmas@0.0.0 dev
+> vite --port 5174
+
+
+  VITE v7.3.0  ready in 123 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+1:07:26 PM [vite] (client) hmr update /src/pages/Contests.jsx
+1:14:00 PM [vite] (client) hmr update /src/pages/Contests.jsx
+1:14:14 PM [vite] (client) hmr update /src/pages/Contests.jsx
+1:27:54 PM [vite] (client) hmr update /src/pages/Contests.jsx
+1:28:35 PM [vite] (client) hmr update /src/pages/Trivia.jsx
+1:28:35 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx: 'import' and 'export' may only appear at the top level. (94:4)
+
+  92 |     };
+  93 |
+> 94 |     export default Trivia;
+     |     ^
+  95 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx:94:4
+  92 |      };
+  93 |  
+  94 |      export default Trivia;
+     |      ^
+  95 |  
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12947:18)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseArrowExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11759:12)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+1:28:35 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx: 'import' and 'export' may only appear at the top level. (94:4)
+
+  92 |     };
+  93 |
+> 94 |     export default Trivia;
+     |     ^
+  95 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx:94:4
+  92 |      };
+  93 |  
+  94 |      export default Trivia;
+     |      ^
+  95 |  
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12947:18)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseArrowExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11759:12)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+1:29:32 PM [vite] (client) Pre-transform error: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx: 'import' and 'export' may only appear at the top level. (94:4)
+
+  92 |     };
+  93 |
+> 94 |     export default Trivia;
+     |     ^
+  95 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx:94:4
+  92 |      };
+  93 |  
+  94 |      export default Trivia;
+     |      ^
+  95 |  
+1:29:32 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx: 'import' and 'export' may only appear at the top level. (94:4)
+
+  92 |     };
+  93 |
+> 94 |     export default Trivia;
+     |     ^
+  95 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/Trivia.jsx:94:4
+  92 |      };
+  93 |  
+  94 |      export default Trivia;
+     |      ^
+  95 |  
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12947:18)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseArrowExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11759:12)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+1:31:54 PM [vite] (client) hmr update /src/pages/Trivia.jsx
+6:04:00 PM [vite] (client) hmr update /src/pages/Join.jsx
+6:04:02 PM [vite] (client) hmr update /src/pages/Contests.jsx
+6:04:18 PM [vite] (client) hmr update /src/pages/Contests.jsx
+6:04:35 PM [vite] (client) hmr update /src/pages/Contests.jsx
+6:05:26 PM [vite] (client) hmr update /src/pages/WhiteElephant.jsx
+6:05:28 PM [vite] (client) hmr update /src/pages/Trivia.jsx
+6:35:31 PM [vite] (client) hmr update /src/contexts/AuthContext.jsx
+6:35:33 PM [vite] (client) hmr update /src/pages/Join.jsx
+6:36:26 PM [vite] (client) hmr update /src/pages/WhiteElephant.jsx
+6:40:59 PM [vite] (client) hmr update /src/pages/WhiteElephant.jsx
+6:40:59 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx: Unexpected token (72:5)
+
+  70 |             .from('gift_exchange')
+  71 |             .select(`
+> 72 |     *,
+     |      ^
+  73 |     participants(name)
+  74 |         `);
+  75 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx:72:5
+  70 |              .from('gift_exchange')
+  71 |              .select(`
+  72 |      *,
+     |       ^
+  73 |      participants(name)
+  74 |          `);
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11050:34)
+      at JSXParserMixin.parseExprOpRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11045:21)
+      at JSXParserMixin.parseExprOp (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11011:27)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10972:17)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12971:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+6:40:59 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx: Unexpected token (72:5)
+
+  70 |             .from('gift_exchange')
+  71 |             .select(`
+> 72 |     *,
+     |      ^
+  73 |     participants(name)
+  74 |         `);
+  75 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx:72:5
+  70 |              .from('gift_exchange')
+  71 |              .select(`
+  72 |      *,
+     |       ^
+  73 |      participants(name)
+  74 |          `);
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11050:34)
+      at JSXParserMixin.parseExprOpRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11045:21)
+      at JSXParserMixin.parseExprOp (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11011:27)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10972:17)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12971:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+6:42:31 PM [vite] (client) Pre-transform error: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx: Unexpected token (72:5)
+
+  70 |             .from('gift_exchange')
+  71 |             .select(`
+> 72 |     *,
+     |      ^
+  73 |     participants(name)
+  74 |         `);
+  75 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx:72:5
+  70 |              .from('gift_exchange')
+  71 |              .select(`
+  72 |      *,
+     |       ^
+  73 |      participants(name)
+  74 |          `);
+6:42:31 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx: Unexpected token (72:5)
+
+  70 |             .from('gift_exchange')
+  71 |             .select(`
+> 72 |     *,
+     |      ^
+  73 |     participants(name)
+  74 |         `);
+  75 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx:72:5
+  70 |              .from('gift_exchange')
+  71 |              .select(`
+  72 |      *,
+     |       ^
+  73 |      participants(name)
+  74 |          `);
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11050:34)
+      at JSXParserMixin.parseExprOpRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11045:21)
+      at JSXParserMixin.parseExprOp (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11011:27)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10972:17)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12971:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+6:42:32 PM [vite] Internal server error: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx: Unexpected token (72:5)
+
+  70 |             .from('gift_exchange')
+  71 |             .select(`
+> 72 |     *,
+     |      ^
+  73 |     participants(name)
+  74 |         `);
+  75 |
+  Plugin: vite:react-babel
+  File: /Users/deandre/antigravity/quick_christmas/src/pages/WhiteElephant.jsx:72:5
+  70 |              .from('gift_exchange')
+  71 |              .select(`
+  72 |      *,
+     |       ^
+  73 |      participants(name)
+  74 |          `);
+      at constructor (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11050:34)
+      at JSXParserMixin.parseExprOpRightExpr (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11045:21)
+      at JSXParserMixin.parseExprOp (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:11011:27)
+      at JSXParserMixin.parseExprOps (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10972:17)
+      at JSXParserMixin.parseMaybeConditional (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseStatementContent (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12971:23)
+      at JSXParserMixin.parseStatementLike (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:261:32)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:189:28
+      at /Users/deandre/antigravity/quick_christmas/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:113:33
+      at step (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:287:14)
+      at /Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:273:13
+      at async.call.result.err.err (/Users/deandre/antigravity/quick_christmas/node_modules/gensync/index.js:223:11)
+Vim: Warning: Output is not to a terminal

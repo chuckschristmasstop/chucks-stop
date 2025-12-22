@@ -1,0 +1,30 @@
+.christmas-btn {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.christmas-btn.primary {
+    background-color: var(--christmas-red);
+    color: var(--snow-white);
+    border: 2px solid white;
+}
+
+.christmas-btn.secondary {
+    background-color: var(--gold);
+    color: var(--text-dark);
+    border: 2px solid white;
+}
+
+.christmas-btn.outline {
+    background-color: transparent;
+    color: var(--snow-white);
+    border: 2px solid var(--snow-white);
+}
+
+.christmas-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
