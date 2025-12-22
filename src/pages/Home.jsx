@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
+import { useAuth } from '../contexts/AuthContext';
 
 const Home = () => {
+    const { user, logout } = useAuth();
     return (
         <div style={{ textAlign: 'center', padding: '2rem', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 1, position: 'relative' }}>
 
@@ -32,8 +34,16 @@ const Home = () => {
                 </Link>
             </nav>
 
-            <footer style={{ marginTop: '4rem', color: 'rgba(255,255,255,0.6)' }}>
+            <footer style={{ marginTop: '4rem', color: 'rgba(255,255,255,0.6)', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
                 <p>Made for the Family ❤️</p>
+                {user && (
+                    <button
+                        onClick={logout}
+                        style={{ background: 'none', border: '1px solid rgba(255,255,255,0.3)', color: 'rgba(255,255,255,0.5)', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem' }}
+                    >
+                        Log Out (Reset User)
+                    </button>
+                )}
             </footer>
 
             <style>{`

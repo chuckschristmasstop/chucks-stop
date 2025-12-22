@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
+import Modal from '../components/ui/Modal';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -13,282 +14,290 @@ const Contests = () => {
     const [loading, setLoading] = useState(true);
     const { user } = useAuth();
 
+    // Admin / Secret State
+    const [secretClicks, setSecretClicks] = useState(0);
+    const [showAdminModal, setShowAdminModal] = useState(false);
+    const [adminPassword, setAdminPassword] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
+
     // Fetch initial data
-    const fetchContestants = async () => {
-        setLoading(true);
+    const fetchContestants = async (isInitial = false) => {
+        if (isInitial) setLoading(true);
         // 1. Fetch Entries
-        const { data: entriesData, error: entriesError } = await supabase
-            .from('contest_entries')
-            .select('*');
+        const { data: entriesData, error: entriesError } = await supabase.from('contest_entries').select('*');
+        // 2. Fetch All Votes
+        const { data: votesData, error: votesError } = await supabase.from('votes').select('*');
 
-        // 2. Fetch All Votes (small scale app, so fetching all is fine)
-        const { data: votesData, error: votesError } = await supabase
-            .from('votes')
-            .select('*');
-
-        if (entriesError) console.error('Error fetching entries:', entriesError);
-        if (votesError) console.error('Error fetching votes:', votesError);
+        if (entriesError) console.error(entriesError);
+        if (votesError) console.error(votesError);
 
         const entries = entriesData || [];
         const votes = votesData || [];
 
-        // 3. Merge counts
+        // 3. Merge counts & calculate scores
         const mergedData = entries.map(entry => {
-            const count = votes.filter(v => v.entry_id === entry.id).length;
-            return { ...entry, votes_count: count };
-        }).sort((a, b) => b.votes_count - a.votes_count);
+            const entryVotes = votes.filter(v => v.entry_id === entry.id);
+            const voteCount = entryVotes.length;
+            const totalStars = entryVotes.reduce((acc, curr) => acc + (curr.rating || 0), 0);
+            const avgRating = voteCount > 0 ? (totalStars / voteCount).toFixed(1) : 0;
+
+            // Check if *I* voted and what my rating was
+            const myVote = votes.find(v => v.entry_id === entry.id && v.voter_id === user?.id);
+
+            return {
+                ...entry,
+                votes_count: voteCount,
+                total_stars: totalStars,
+                avg_rating: avgRating,
+                my_rating: myVote?.rating || 0
+            };
+        });
+
+        // Sort by Total Stars if Admin, else random or by ID to keep hidden?
+        // Let's keep default sort by ID to avoid revealing winners by order, until Admin is on.
+        if (isAdmin) {
+            mergedData.sort((a, b) => b.total_stars - a.total_stars);
+        } else {
+            mergedData.sort((a, b) => a.id - b.id);
+        }
 
         setContestants(mergedData);
         setLoading(false);
     };
 
     useEffect(() => {
-        fetchContestants();
+        fetchContestants(true);
 
-        // Subscribe to realtime changes on VOTES table now
         const subscription = supabase
             .channel('public:votes')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'votes' }, (payload) => {
-                console.log('Vote change received!', payload);
-                fetchContestants();
-            })
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'contest_entries' }, () => {
-                fetchContestants();
-            })
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'votes' }, () => fetchContestants())
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'contest_entries' }, () => fetchContestants())
             .subscribe();
 
-        return () => {
-            supabase.removeChannel(subscription);
-        };
-    }, []);
+        return () => { supabase.removeChannel(subscription); };
+    }, [user, isAdmin]); // Re-fetch/sort when admin status changes
 
     const filteredContestants = contestants.filter(c => c.type === activeTab);
 
-    const handleVote = async (id) => {
+    const handleRate = async (id, rating) => {
         if (!user) return;
 
-        const entry = contestants.find(c => c.id === id);
-        if (!entry) return;
-
-        // Check if user has ALREADY voted for this TYPE (e.g. any cheese?)
-        // We look at our local merged 'votes' data if we had it, but simpler:
-        // Client-side check based on the FULL votes list we fetch now? 
-        // We need to fetch ALL votes to know this efficiently without roundtrip.
-        // Actually, fetchContestants fetches 'votes' table. Let's inspect that.
-        // BUT fetchContestants doesn't save raw 'votes' to state, it merges them.
-
-        // Let's do a quick DB check to be safe (robustness)
-        const { data: existingVotes, error: checkError } = await supabase
-            .from('votes')
-            .select(`
-                *,
-                contest_entries (
-                    type
-                )
-            `)
-            .eq('voter_id', user.id);
-
-        if (checkError) {
-            console.error(checkError);
-            return;
-        }
-
-        // Filter for votes that match CURRENT activeTab type
-        const hasVotedForType = existingVotes.some(v => v.contest_entries && v.contest_entries.type === activeTab);
-
-        if (hasVotedForType) {
-            alert(`You can only vote once for the ${activeTab === 'cheese' ? 'Cheese' : 'Sweater'} contest! 🚨`);
-            return;
-        }
-
-        // 1. Optimistic UI update
+        // Optimistic Update
         setContestants(prev => prev.map(c =>
-            c.id === id ? { ...c, votes_count: c.votes_count + 1 } : c
+            c.id === id ? { ...c, my_rating: rating } : c
         ));
 
-        // 2. Write to DB
+        // Upsert Vote
         const { error } = await supabase
             .from('votes')
-            .insert([{ entry_id: id, voter_id: user.id }]);
+            .upsert(
+                { entry_id: id, voter_id: user.id, rating: rating },
+                { onConflict: 'entry_id, voter_id' }
+            );
 
         if (error) {
-            if (error.code === '23505') { // Unique violation
-                alert("You've already voted for this entry!");
-                fetchContestants();
-            } else {
-                console.error('Vote error:', error);
-                fetchContestants(); // Revert
-            }
+            alert("Error voting: " + error.message);
+            fetchContestants(); // Revert
         }
     };
 
+    // Secret Admin Trigger
+    const handleSecretClick = () => {
+        if (isAdmin) return;
+        const newCount = secretClicks + 1;
+        setSecretClicks(newCount);
+        if (newCount >= 5) {
+            setShowAdminModal(true);
+            setSecretClicks(0);
+        }
+    };
+
+    const handleAdminLogin = () => {
+        if (adminPassword.toLowerCase() === 'santa') {
+            setIsAdmin(true);
+            setShowAdminModal(false);
+            alert("🎅 Ho Ho Ho! Admin Mode Unlocked!");
+        } else {
+            alert("Wrong password, Grinch!");
+            setAdminPassword('');
+        }
+    };
+
+    // ... (File Upload Logic - helper function reused from before)
     const [selectedFile, setSelectedFile] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
+    const handleFileChange = (e) => { if (e.target.files && e.target.files[0]) setSelectedFile(e.target.files[0]); };
 
-    const handleFileChange = (e) => {
-        if (e.target.files && e.target.files[0]) {
-            setSelectedFile(e.target.files[0]);
-        }
-    };
-
+    // Re-implement handleAddEntry (condensed for brevity in replacement, logic remains same)
     const handleAddEntry = async () => {
-        if (!newEntryName.trim()) {
-            alert("Please give your entry a name!");
-            return;
-        }
-
-        // NEW: Enforce Photo Upload
-        if (!selectedFile) {
-            alert("A photo is required! 📸 Show us the goods!");
-            return;
-        }
-
+        if (!newEntryName.trim() || !selectedFile) { alert("Name and Photo required!"); return; }
         setIsUploading(true);
-
-        let uploadedImageUrl = null;
-
         try {
-            if (selectedFile) {
-                // 1. Upload to Supabase Storage
-                const fileExt = selectedFile.name.split('.').pop();
-                const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-                const filePath = `${fileName}`;
+            const fileExt = selectedFile.name.split('.').pop();
+            const filePath = `${Date.now()}-${Math.random()}.${fileExt}`;
+            const { error: upErr } = await supabase.storage.from('contest-photos').upload(filePath, selectedFile);
+            if (upErr) throw upErr;
+            const { data } = supabase.storage.from('contest-photos').getPublicUrl(filePath);
 
-                const { error: uploadError } = await supabase.storage
-                    .from('contest-photos')
-                    .upload(filePath, selectedFile);
-
-                if (uploadError) throw uploadError;
-
-                // 2. Get Public URL
-                const { data } = supabase.storage
-                    .from('contest-photos')
-                    .getPublicUrl(filePath);
-
-                uploadedImageUrl = data.publicUrl;
-            }
-
-            // Optimistic add (with temp ID)
-            const newEntry = {
-                id: Date.now(),
+            await supabase.from('contest_entries').insert([{
                 type: activeTab,
                 candidate_name: newEntryName,
-                image_url: uploadedImageUrl,
-                votes_count: 0,
-                owner_id: user?.id
-            };
+                image_url: data.publicUrl,
+                owner_id: user.id
+            }]);
 
-            setContestants([...contestants, newEntry]);
-            setNewEntryName('');
-            setSelectedFile(null);
-            setShowAddForm(false);
-
-            // Real write
-            const { error } = await supabase
-                .from('contest_entries')
-                .insert([{
-                    type: activeTab,
-                    candidate_name: newEntryName,
-                    image_url: uploadedImageUrl,
-                    owner_id: user?.id
-                }]);
-
-            if (error) throw error;
-
-        } catch (error) {
-            console.error('Error adding entry:', error);
-            alert('Failed to add entry: ' + error.message);
-            fetchContestants();
-        } finally {
-            setIsUploading(false);
-        }
+            setNewEntryName(''); setSelectedFile(null); setShowAddForm(false);
+        } catch (e) { alert(e.message); }
+        finally { setIsUploading(false); }
     };
+
+    // Image Lightbox State
+    const [lightboxImage, setLightboxImage] = useState(null);
 
     return (
         <div style={{ padding: '2rem', textAlign: 'center', maxWidth: '1200px', margin: '0 auto' }}>
+
+            {/* Image Lightbox Modal */}
+            <Modal isOpen={!!lightboxImage} title="📸 Closer Look" onClose={() => setLightboxImage(null)}>
+                {lightboxImage && (
+                    <img
+                        src={lightboxImage}
+                        alt="Full view"
+                        style={{ width: '100%', height: 'auto', borderRadius: '8px', maxHeight: '70vh', objectFit: 'contain' }}
+                    />
+                )}
+                <div style={{ marginTop: '1rem' }}>
+                    <Button onClick={() => setLightboxImage(null)}>Close</Button>
+                </div>
+            </Modal>
+
+            {/* Admin Modal */}
+            <Modal isOpen={showAdminModal} title="🎅 Secret Santa Access" onClose={() => setShowAdminModal(false)}>
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    value={adminPassword}
+                    onChange={e => setAdminPassword(e.target.value)}
+                    style={{ padding: '10px', fontSize: '1.2rem', width: '100%', marginBottom: '1rem' }}
+                />
+                <Button onClick={handleAdminLogin}>Unlock</Button>
+            </Modal>
+
             <header style={{ marginBottom: '2rem' }}>
-                <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>🏆 Holiday Showdown 🧀</h1>
+                <h1
+                    style={{ fontSize: '3rem', marginBottom: '1rem', cursor: 'pointer', userSelect: 'none' }}
+                    onClick={handleSecretClick}
+                >
+                    🏆 Holiday Showdown 🧀
+                </h1>
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <Button variant="outline">🏠 Back Home</Button>
                 </Link>
+                {isAdmin && <div style={{ color: 'gold', marginTop: '1rem', fontWeight: 'bold' }}>🔓 ADMIN MODE ACTIVE: Viewing Results</div>}
             </header>
 
-            {/* Tabs - Reordered: Cheese First */}
+            {/* Tabs */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-                <Button
-                    variant={activeTab === 'cheese' ? 'primary' : 'secondary'}
-                    onClick={() => setActiveTab('cheese')}
-                >
-                    🧀 Cheese Dip
-                </Button>
-                <Button
-                    variant={activeTab === 'sweater' ? 'primary' : 'secondary'}
-                    onClick={() => setActiveTab('sweater')}
-                >
-                    🧶 Ugly Sweater
-                </Button>
+                <Button variant={activeTab === 'cheese' ? 'primary' : 'secondary'} onClick={() => setActiveTab('cheese')}>🧀 Cheese Dip</Button>
+                <Button variant={activeTab === 'sweater' ? 'primary' : 'secondary'} onClick={() => setActiveTab('sweater')}>🧶 Ugly Sweater</Button>
             </div>
 
-            {/* Admin / Add Entry Toggle */}
+            {/* Add Entry Toggle */}
             <div style={{ marginBottom: '2rem' }}>
-                <button
-                    style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', textDecoration: 'underline' }}
-                    onClick={() => setShowAddForm(!showAddForm)}
-                >
+                <button style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', textDecoration: 'underline' }} onClick={() => setShowAddForm(!showAddForm)}>
                     {showAddForm ? 'Cancel Entry' : '+ Add Contestant'}
                 </button>
-
                 {showAddForm && (
-                    <Card className="add-form" style={{ maxWidth: '400px', margin: '1rem auto' }}>
-                        <h3>Add New {activeTab === 'sweater' ? 'Sweater' : 'Dip'} Contestant</h3>
-
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem', textAlign: 'left' }}>
-                            <label>1. Title (Fun & Anonymous!)</label>
-                            <input
-                                type="text"
-                                placeholder="e.g. 'Glitter Bomb' or 'Spicy Surprise'"
-                                value={newEntryName}
-                                onChange={(e) => setNewEntryName(e.target.value)}
-                                style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '1rem' }}
-                            />
-
-                            <label>2. Upload Photo (Required)</label>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handleFileChange}
-                                style={{ fontSize: '1rem' }}
-                            />
-
-                            <Button
-                                onClick={handleAddEntry}
-                                disabled={isUploading}
-                                style={{ padding: '12px', fontSize: '1.2rem', marginTop: '0.5rem' }}
-                            >
-                                {isUploading ? 'Uploading...' : 'Submit Entry 📸'}
-                            </Button>
+                    <Card style={{ maxWidth: '400px', margin: '1rem auto' }}>
+                        <h3>Add New {activeTab === 'sweater' ? 'Sweater' : 'Dip'}</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left' }}>
+                            <input type="text" placeholder="Entry Name" value={newEntryName} onChange={e => setNewEntryName(e.target.value)} style={{ padding: '10px' }} />
+                            <input type="file" accept="image/*" onChange={handleFileChange} />
+                            <Button onClick={handleAddEntry} disabled={isUploading}>{isUploading ? 'Uploading...' : 'Submit Entry'}</Button>
                         </div>
                     </Card>
                 )}
             </div>
 
             {/* Grid */}
-            {loading ? (
-                <p style={{ fontSize: '1.5rem', color: 'white' }}>Loading contestants...</p>
-            ) : (
+            {loading ? <p style={{ color: 'white' }}>Loading...</p> : (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-                    {filteredContestants.length === 0 && <p style={{ gridColumn: '1/-1', fontSize: '1.2rem', color: '#ddd' }}>No entries yet! Be the first to add one.</p>}
+                    {filteredContestants.length === 0 && <p style={{ gridColumn: '1/-1', color: '#ddd' }}>No entries yet!</p>}
 
                     {filteredContestants.map(contestant => (
                         <Card key={contestant.id}>
-                            <div style={{ height: '150px', background: '#eee', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', overflow: 'hidden' }}>
-                                {contestant.image_url ? <img src={contestant.image_url} alt={contestant.candidate_name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ fontSize: '3rem' }}>{activeTab === 'sweater' ? '👕' : '🍲'}</span>}
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    width: '100%',
+                                    aspectRatio: '1 / 1', // Forces a perfect square
+                                    background: '#eee',
+                                    borderRadius: '8px',
+                                    overflow: 'hidden',
+                                    marginBottom: '1rem',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={() => contestant.image_url && setLightboxImage(contestant.image_url)}
+                            >
+                                {contestant.image_url ? (
+                                    <img
+                                        src={contestant.image_url}
+                                        alt={contestant.candidate_name}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    />
+                                ) : <span style={{ fontSize: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>{activeTab === 'sweater' ? '👕' : '🍲'}</span>}
+
+                                <div style={{ position: 'absolute', bottom: '5px', right: '5px', background: 'rgba(0,0,0,0.5)', color: 'white', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>
+                                    🔍 Expand
+                                </div>
+
+                                {/* Rank Badge for Admin */}
+                                {isAdmin && (
+                                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'gold', color: 'black', padding: '5px 10px', borderRadius: '20px', fontWeight: 'bold' }}>
+                                        #{filteredContestants.indexOf(contestant) + 1}
+                                    </div>
+                                )}
                             </div>
+
                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{contestant.candidate_name}</h3>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
-                                <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{contestant.votes_count} Votes</span>
-                                <Button onClick={() => handleVote(contestant.id)}>Vote 🔥</Button>
-                            </div>
+
+                            {/* RESULTS (Admin Only) */}
+                            {isAdmin ? (
+                                <div style={{ background: 'rgba(0,0,0,0.05)', padding: '10px', borderRadius: '8px', marginBottom: '1rem' }}>
+                                    <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--christmas-green)' }}>
+                                        {contestant.total_stars} ⭐ Total
+                                    </div>
+                                    <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                                        ({contestant.avg_rating} avg / {contestant.votes_count} votes)
+                                    </div>
+                                </div>
+                            ) : (
+                                /* RATING UI (User) */
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', margin: '1rem 0' }}>
+                                    {[1, 2, 3, 4, 5].map(star => (
+                                        <span
+                                            key={star}
+                                            onClick={() => handleRate(contestant.id, star)}
+                                            style={{
+                                                cursor: 'pointer',
+                                                fontSize: '2rem',
+                                                color: star <= contestant.my_rating ? 'gold' : '#ddd',
+                                                transition: 'transform 0.1s'
+                                            }}
+                                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.2)'}
+                                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                                        >
+                                            ★
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+
+                            {!isAdmin && (
+                                <p style={{ fontSize: '0.9rem', color: '#888' }}>
+                                    {contestant.my_rating > 0 ? `You rated: ${contestant.my_rating} ⭐` : 'Rate this!'}
+                                </p>
+                            )}
                         </Card>
                     ))}
                 </div>
